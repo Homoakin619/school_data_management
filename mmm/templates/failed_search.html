@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="mt-3">
+
+    <div class="container">
+        <h5 style="color:red">{{ search_failed }}</h5>
+        <h2>Welcome to the Students Management Portal</h2>
+        
+        <div class="row wow fadeIn">
+            {% for student in all %}
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-3 mb-4">
+
+              <!--Card-->
+              <div class="card" style="height: 18rem;">
+        
+                <!--Card image-->
+                <div class="view overlay">
+                  {% if student.image %}
+                  <img src="{{ student.image.url }}" class="card-img-top rounded-circle" alt="image">
+                  {% endif %}
+                  <a href="{% url 'detail' student.id %}">
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+                <!--Card image-->
+        
+                <!--Card Body-->
+                <div class="card-body text-center">
+                  <span>
+                      <a href="{% url 'detail' student.id %}" class="dark-grey-text">
+                          {{ student.firstname}} {{ student.lastname}}
+                      </a>
+                  </span>
+                  <p>{{ student.get_present_class_display }}</p>
+                  <p class="font-weight-bold blue-text">
+                        <a href="{% url 'edit' student.id %}">Edit</a> | 
+                        <a href="{% url 'detail' student.id %}" >Details</a>
+                  </p>
+                </div>
+                <!--End Card Body.../-->
+
+              </div>
+              <!--Card-->
+        
+            </div>
+            <!-- End Grid column-->
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}

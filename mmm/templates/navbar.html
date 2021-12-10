@@ -1,0 +1,54 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container-fluid">
+      <!-- Brand -->
+      <a href="{% url 'index' %}" class="navbar-brand waves-effect" href="">
+        <strong class="blue-text">My Students Database</strong><i class="fas fa-square-check"></i>
+      </a>
+
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        {% if user.is_authenticated %}
+        <!-- Left -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link waves-effect" href="{% url 'index' %}" >All</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link waves-effect dropdown-toggle" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">Senior</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                  <li><a href="{% url 'senior' %}" class="dropdown-item">All</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a href="{% url 'senior' %}" class="dropdown-item">SSS 1</a></li>
+                  <li><a href="{% url 'senior' %}" class="dropdown-item">SSS 2</a></li>
+                  <li><a href="{% url 'senior' %}" class="dropdown-item">SSS 3</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-effect" href="{% url 'junior' %}">Junior</a>
+            </li>
+        </ul>
+
+      </div>
+        <!-- Search Bar -->
+        <form class="form-inline" action="{% url 'search' %}" method="post" >{% csrf_token %}
+          <div class="input-group w-100">
+            <input type="text" name="search" class="form-control col-auto rounded-pill float-left" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+            <span class="input-group-btn col-auto"><button class="btn btn-sm btn-outline-secondary rounded-pill" type="submit" id="button-addon2">Search</button></span>
+          </div>
+        </form>
+        <!-- End Search Bar -->
+            
+      <div class="float-right">
+		    <a href="{% url 'register' %}">Register Student</a> |
+        <a style="color: #ff0000;font-weight: bold;" href="{% url 'logout' %}">Logout</a>
+      </div>
+      {% endif %}
+    </div>
+</nav>

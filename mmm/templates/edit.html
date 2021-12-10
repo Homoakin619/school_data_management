@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="mt-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Edit Details</h3>
+                        <form method="post" enctype="multipart/form-data">{% csrf_token %}
+                            {{ form.as_p }}
+                            <input class="btn btn-secondary" type="submit" value="Save Details" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+</main>
+{% endblock %}

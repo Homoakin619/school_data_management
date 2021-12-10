@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="mt-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Update School Fee Payment</h3>
+                        <h5 class="cart-title">For : {{ student.firstname }} {{ student.lastname }}</h5>
+                        <div class="mb-3">
+                            <form method="POST" class="row" >{% csrf_token%}
+                              <div class="col-md-12 mb-3">
+                                  <label for="id_present_class">Class:</label>
+                                  {{ form.present_class }}
+                              </div>
+                              <div class="col-md-6 mb-3">
+                                  <label for="id_school_fee">School fee:</label>
+                                  <input type="number" name="school_fee" value="{{ class.get_school_fee }}" class="form-control" required id="id_school_fee" readonly>
+                              </div>
+                              <div class="col-md-6">
+                                  <label for="id_outstanding">Outstanding:</label>
+                                  <input type="number" name="outstanding" value="{{ class.get_outstanding }}" class="form-control" required id="id_outstanding" readonly>
+                              </div>
+                              <div class="col-md-6">
+                                  <label for="id_paid">Paid:</label>
+                                  {{ form.paid }}
+                              </div>
+                              <div class="col-12 mb-3">
+                                  <input class="btn btn-success" type="submit" value="Save Details" />
+                              </div>
+                          </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    $(function () {
+      $("#id_date").datepicker({
+        format:'dd/mm/yyyy',
+      });
+    });
+  </script>
+{% endblock %}

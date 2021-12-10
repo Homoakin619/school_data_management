@@ -1,0 +1,44 @@
+{% extends 'base1.html' %}
+{% block content %}
+<main>
+    <br>
+    <div class="container">
+        <h4>Exam Interface</h4>
+        <p style="float:right;">Time for Exam: 30mins <b>|</b> Time Remaining:</p>
+        
+            <form action="" method="post">{% csrf_token %}
+                {% for page in page_obj %}
+                <p>{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</p>
+                <label for="question">Q: {{ page.question }}</label>
+                <br>
+                <label for="option1">A</label>
+                <input type="radio" name="option" id="option1" value="{{ page.option1 }}"> <label for="option1">{{ page.option1 }}</label>
+                <br>
+                <label for="option2">B</label>
+                <input type="radio" name="option" id="option2" value="{{ page.option2 }}"> <label for="option2">{{ page.option2 }}</label>
+                <br>
+                <label for="option3">C</label>
+                <input type="radio" name="option" id="option3" value="{{ page.option3 }}"> <label for="option3">{{ page.option3 }}</label>
+                <br>
+                <label for="option4">D</label>
+                <input type="radio" name="option" id="option4" value="{{ page.option4 }}"> <label for="option4">{{ page.option4 }}</label>
+                <p style="color:red">{{ error }}</p>
+                <br>
+                <div class="paginator">
+                    {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number}}"  class="btn btn-primary"><< Previous</a>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number}}"  class="btn btn-primary">Next >></a>
+                    {% else %}
+                    <input type="submit" class="btn btn-primary" value="Finish">
+                    {% endif %}
+                    <span style="float:right"><input type="button" class="btn btn-danger" value="End Test"> </span>
+                </div>
+                {% endfor %}
+            </form>
+        
+  
+    </div>
+</main>
+{% endblock %}

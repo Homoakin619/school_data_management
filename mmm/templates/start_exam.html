@@ -1,0 +1,14 @@
+{% extends 'base1.html' %}
+{% block content %}
+<main>
+    <div class="container">
+        <h3>Register your details and start your exam</h3>
+        <form method="post">{% csrf_token %}
+            <label for="name"> <strong>Name</strong> </label>
+            <input type="text" name="name" id="name">
+            <input type="submit" class="btn btn-secondary" value="START">
+        </form>
+        <p style="color:red">{{ error }}</p>
+    </div>
+</main>
+{% endblock %}

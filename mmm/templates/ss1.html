@@ -1,0 +1,17 @@
+{% extends 'base1.html' %}
+{% block content %}
+<main>
+    <div class="container">
+        <h1>Select a subject to offer</h1>
+        <h4>Choose from the listed subjects below</h4>
+        <ul>
+            <li><a href="{% url 'start' %}">Mathematics</a></li>
+            <li><a href="{% url 'start' %}">English</a></li>
+            <li><a href="{% url 'start' %}">Chemistry</a></li>
+            <li><a href="{% url 'start' %}">Physics</a></li>
+            <li><a href="{% url 'start' %}">Further Mathematics</a></li>
+            <li><a href="{% url 'start' %}">Government</a></li>
+        </ul>
+    </div>
+</main>
+{% endblock %}

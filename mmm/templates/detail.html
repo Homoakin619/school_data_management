@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load tags %}
+{% block content %}
+<main class="mt-3">
+    <div class="container">
+        <div class="row">
+            <div class="card col-md-10 offset-md-1">
+                <div class="row g-0">
+                    <div class="col-md-5">
+                        {% if student.image %}
+                        <img src="{{ student.image.url }}" alt="{{ student.firstname }} {{ student.lastname }}" 
+                             class="card-img-top rounded-circle mt-5">
+                        {% endif %}
+                    </div>
+                    <div class="col-md-7 mb-3">
+                        <div class="card-body">
+                            <h4 class="card-header">Details for : {{ student.firstname }} {{ student.lastname }}</h4>
+                            <p class="card-text">Name: {{ student.firstname }} {{ student.lastname }}</p>
+                            <p class="card-text">Sex: {{ student.get_sex_display }}</p>
+                            <p class="card-text">Class: {{ student.get_present_class_display }}</p>
+                            <p class="card-text">Admission Date: {{ student.date_of_admission }}</p>
+                            <p class="card-text">School Fee: N{{ class.school_fee }} {% if check %}<span style="font-size: 3rem;color:green" class="float-right success"><i class="fas fa-check "></i></span>{% endif %}</p> 
+                            <p class="card-text">Amount Paid: N{{ class.paid }} &nbsp; <a class="card-link" href="{% url 'school_fee' student.id %}">Update</a></p>
+                            <p class="card-text">Outstanding Fee: N{{ class.get_outstanding }}</p>
+                            <p class="card-title">Results:</p>
+                            {% if result %}
+                            {% if result.term1 %}
+                            <h4 class="card-title">First Term</h4>
+                            <p class="card-text"> {{ result.term1|con_result|linebreaksbr }} </p>
+                            {% endif %}
+                            {% if result.term2 %}
+                            <h4 class="card-title">Second Term</h4>
+                            <p class="card-text"> {{ result.term2|con_result|linebreaksbr }} </p>
+                            {% endif %}
+                            {% if result.term3 %}
+                            <h4 class="card-title">Third Term</h4>
+                            <p class="card-text"> {{ result.term3|con_result|linebreaksbr }} </p>
+                            {% endif %}
+                            <a href="{% url 'edit_result' student.id %}"> 
+                                <button class="btn btn-primary rounded-pill float-right">Edit Results</button>
+                            </a>
+                            {% else %}
+                            <p class="card-text">There are no results to show</p>
+                            <a href="{% url 'add' student.id %}"> 
+                                <button type="button" class="btn btn-primary btn-outline-info float-right">Add Results</button>
+                            </a>
+                            {% endif %}
+                            <a href="{% url 'edit' student.id %}"> 
+                                <button type="button" class="btn btn-secondary rounded-pill float-right">Edit Details</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+{% endblock %}

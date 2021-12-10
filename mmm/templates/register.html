@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="mt-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Register Student</h3>
+                        <div class="mb-3">
+                            <form method="POST" enctype="multipart/form-data" class="row" >{% csrf_token%}
+                                <div class="col-md-6">
+                                    <label for="id_firstname" class="form-label">Firstname:</label>
+                                    {{ form.firstname }}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="id_lastname" class="form-label">Lastname:</label>
+                                    {{ form.lastname }}
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="id_sex" class="form-label">Sex:</label>
+                                    {{ form.sex }}
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="id_date_of_birth" class="form-label">Date of birth:</label>
+                                    {{ form.date_of_birth }}
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="id_date_of_admission" class="form-label">Date of admission:</label>
+                                    {{ form.date_of_admission }}
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="id_class_of_admission" class="form-label">Class of admission:</label>
+                                    {{ form.class_of_admission }}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="id_present_class" class="form-label">Present class:</label> 
+                                    {{ form.present_class }}
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="id_image" class="form-label">Image:</label>
+                                    {{ form.image }}
+                                </div>
+                                <div class="col-12">
+                                    <input class="btn btn-success" type="submit" value="Save Details" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    $(function () {
+      $("#id_date").datepicker({
+        format:'dd/mm/yyyy',
+      });
+    });
+  </script>
+{% endblock %}

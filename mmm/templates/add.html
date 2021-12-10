@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="mt-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Add Result for</h3>
+                        <p class="fs-4">{{ student.firstname }} {{ student.lastname }} : {{ student.get_present_class_display }}</p>
+                        <form method="post" class="row">{% csrf_token %}
+                            <div class="col-md-12 mb-3">
+                                <label for="id_term1" class="form-label">First Term:</label> 
+                                <textarea class="form-control" name="term1" cols="40" rows="5" id="id_term1"></textarea>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="id_term2" class="form-label">Second Term:</label> 
+                                <textarea class="form-control" name="term2" cols="40" rows="5" id="id_term2"></textarea>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="id_term3" class="form-label">Third Term:</label> 
+                                <textarea  class="form-control" name="term3" cols="40" rows="5" id="id_term3"></textarea>
+                            </div>
+                            <div class="col-md-12 mb-3 offset-md-4">
+                                <input class="btn btn-primary" type="submit" value="Submit Result" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+</main>
+{% endblock %}
