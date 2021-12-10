@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-=6e8422@l9&znwp8=&ql^ne4^l442!d2q7*s5e-h-==+8ht79x
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'https://school.herokuapp.com/',
+    'https://myschool-edu.herokuapp.com/',
     '127.0.0.1',
     'localhost'
     ]
